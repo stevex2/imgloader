@@ -4,9 +4,12 @@ var exec = require("child_process").exec; 	//Node.js module, child_process it al
 
 function start(){
 	console.log("Request handler 'start' was called.");
-	var  content = "empty";
-	exec("find /", function (error, stdout, stderr){
-		content = stdout;
+	
+	exec("ls -lah", function (error, stdout, stderr){
+
+		response.writeHead(200, {"Content-Type": "text/plain"});
+		response.write(stdout);
+		response.end();
 	} );
 
 	return content; 
@@ -15,7 +18,10 @@ function start(){
 
 function upload(){
 	console.log("Request handler 'upload' was called.");
-	return "hello upload";
+		
+		response.writeHead(200, {"Content-Type": "text/plain"});
+		response.write("hello upload");
+		response.end();
 }
 
 exports.start = start;
