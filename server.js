@@ -23,6 +23,7 @@ function start(route, handle){
 
 
 	response.writeHead(200, {"Content-Type" : "text/plain"});
+	//change
 
 	var content = route(handle, pathname);
 	response.write(content);
