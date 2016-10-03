@@ -2,7 +2,7 @@ var exec = require("child_process").exec; 	//Node.js module, child_process it al
 												//What exec() does is, it executes a shell command from within Node.js.
 
 
-function start(){
+function start(response){
 	console.log("Request handler 'start' was called.");
 	
 	exec("ls -lah", function (error, stdout, stderr){
@@ -12,11 +12,11 @@ function start(){
 		response.end();
 	} );
 
-	return content; 
+	 
 	
 } 
 
-function upload(){
+function upload(response){
 	console.log("Request handler 'upload' was called.");
 		
 		response.writeHead(200, {"Content-Type": "text/plain"});
