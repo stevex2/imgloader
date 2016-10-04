@@ -3,17 +3,27 @@ var exec = require("child_process").exec; 	//Node.js module, child_process it al
 
 
 function start(response){
-	console.log("Request handler 'start' was called.");
 	
-	exec("ls -lah", function (error, stdout, stderr){
 
-		response.writeHead(200, {"Content-Type": "text/plain"});
-		response.write(stdout);
+	var body = '<HTML>'+
+		'<head>'+
+		'<meta http-equiv = "Content-Type" content = "text/html";'+
+		'charset=UTF-8/>'+
+		'<head/>'+
+		'<body>'+
+		'<form action = "/upload" method = "post">'+
+		'<textarea name= "text" rows="20" cols="60"> </textarea>'+
+		'<br><input type="submit" value="Submit Text">'+
+		'</form>'+
+		'</body>'+
+		'</html>';
+
+
+		response.writeHead(200, {"Content-Type": "text/html"});
+		response.write(body);
 		response.end();
-	} );
-
-	 
 	
+
 } 
 
 function upload(response){
