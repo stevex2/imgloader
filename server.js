@@ -1,13 +1,4 @@
 // //import the http module and assign it to the http var
-// var http = require('http');
-
-// //http module has a function createServer which returns an object which has a listen method
-// //createServer object takes an anonymous function as a parameter
-// http.createServer(function(request, response){
-// 	response.writeHead(200, {"Content-Type": "text/plain"});
-// 	response.write("Hello world");
-// 	response.end();
-// }).listen(8888);
 
 
 var http =  require('http');
@@ -17,10 +8,18 @@ var url = require('url'); //url module provides methods to extract different par
 
 function start(route, handle){
 	function onRequest(request, response){
-		
+
+	
 	var pathname = url.parse(request.url).pathname;
 	console.log('request for ' + pathname + ' received');
-	route(handle, pathname, response);
+
+	// request.setEncoding("utf8"); handled by formidable
+
+	route(handle, pathname, response, request); //router call is only called when all POST data is gathered & sends the data to the request handlers
+	
+
+	
+
 
 
 }
